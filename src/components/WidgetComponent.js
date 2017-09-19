@@ -8,9 +8,11 @@ export default function WidgetComponent({ hostInfo }) {
           <div className="card-image">
             <img src="https://i.pinimg.com/736x/17/d6/fb/17d6fbf77448ad0c2fe0d7b8d19dceea--moss-lawn-backyard-trees.jpg" />
             <div className="card-title">
-              <h4>{`$${hostInfo.rent}/month for ${hostInfo.dimensions}sqft`}</h4>
-              <p>
+              <h4>
                 {hostInfo.address}
+              </h4>
+              <p>
+                {`$${hostInfo.rent}/month for ${hostInfo.dimensions}sqft`}
               </p>
               <p>
                 {`Available starting ${hostInfo.date}`}

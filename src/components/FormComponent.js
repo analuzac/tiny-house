@@ -17,9 +17,10 @@ export default class FormComponent extends Component {
     const rent = $form.rent.value.trim();
     const date = $form.date.value.trim();
     const amenities = $form.amenities.value.trim();
-
-    this.props.onSubmit({ coordinates, dimensions, rent, date, amenities });
-    console.log({ coordinates, dimensions, rent, date, amenities });
+    const hostInfo = { coordinates, dimensions, rent, date, amenities };
+    this.props.onSubmit(hostInfo);
+    this.props.addListing(hostInfo);
+    console.log(hostInfo);
 
     //let regPhone = /(?:\d{3}|\(\d{3}\))([-\/\.])\d{3}\1\d{4}/;
     // let regPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;

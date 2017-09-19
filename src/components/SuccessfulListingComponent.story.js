@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import WidgetComponent from './WidgetComponent';
+import SuccessfulListingComponent from './SuccessfulListingComponent';
 
 let hostInfo = {
   rent: 500,
@@ -11,6 +11,8 @@ let hostInfo = {
   //   imagePath: '//via.placeholder.com/300x200'
 };
 
-storiesOf('WidgetComponent', module).add('happy path', () =>
-  <WidgetComponent hostInfo={hostInfo} />
+const onClose = {};
+
+storiesOf('SuccessfulListingComponent', module).add('happy path', () =>
+  <SuccessfulListingComponent hostInfo={hostInfo} onClose={onClose} />
 );

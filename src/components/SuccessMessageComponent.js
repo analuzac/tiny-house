@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SuccessMessageComponent({ onClose = () => {} }) {
+export default function SuccessMessageComponent({ onClose }) {
   function handleClick(event) {
     onClose();
   }

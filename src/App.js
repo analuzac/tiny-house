@@ -1,21 +1,57 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import RegisterBackyardPage from './components/RegisterBackyardPage';
+import ViewListingsPage from './components/ViewListingsPage';
+import getListingItems from './requests/getListingItems';
 
-class App extends Component {
+export default class App extends Component {
+  state = {
+    listingItems: [],
+    hostInfo: null
+  };
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <RegisterBackyardPage
+        hostInfo={this.state.hostInfo}
+        addListing={this._addListing}
+        onSubmit={this._submitForm}
+        onClose={this._closeSuccessMessage}
+      />,
+     <ViewListingsPage listingItems={this.state.listingItems} />;
+    )
   }
-}
 
-export default App;
+  //In ViewLIstingsPage.js
+  componentDidMount() {
+    getListingItems().then(listingItems => {
+      this.setState({
+        listingItems
+      });
+    });
+  }
+
+  //In RegisterBackyardPage.js to send to API
+  _addListing =  hostInfo  => {
+    //add a new item to the listingItems
+    this.setState(prevState => {
+      const listingItems = prevState.listingItems.slice(0);
+      listingItems.push( hostInfo );
+      return {
+        listinglItems
+      };
+    });
+  };
+
+  //In RegisterBackyardPage.js for closeSucessMessage
+  _submitForm = hostInfo  => {
+    this.setState({
+      hostInfo: hostInfo
+    });
+  };
+
+  //In RegisterBackyardPage.js
+  _closeSuccessMessage = () => {
+    this.setState({
+      hostInfo: null
+    });
+  };
+}
