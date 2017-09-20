@@ -14,19 +14,19 @@ export default class App extends Component {
   };
   render() {
     return (
-      // <RegisterBackyardPage
-      //   hostInfo={this.state.hostInfo}
-      //   onSubmit={this._onSubmit}
-      //   addListing={this._addListing}
-      //   onClose={this._closeSuccessMessage}
-      //   onEdit={this._onEdit}
-      //   onDelete={this._onDelete}
-      // />
-      // <ViewListingsPage listingItems={this.state.listingItems} />
-      <DetailedListingPage
+      <RegisterBackyardPage
         hostInfo={this.state.hostInfo}
-        onLove={this._onLove}
+        onSubmit={this._submitForm}
+        addListing={this._addListing}
+        onClose={this._closeSuccessMessage}
+        onEdit={this._onEdit}
+        onDelete={this._onDelete}
       />
+      // <ViewListingsPage
+      //   listingItems={this.state.listingItems}
+      //   onLove={this._onLove}
+      // />
+      // <DetailedListingPage hostInfo={this.state.hostInfo} />
     );
   }
 
@@ -108,11 +108,18 @@ export default class App extends Component {
   _onLove = hostInfo => {
     console.log('touched onLove');
     //updateListing
-    getOneListing().then(listing => {
+    console.log('whats in the state', this.state.hostInfo);
+    console.log('inside onLove, before dispatch', hostInfo);
+    let listingId = hostInfo.id;
+    //console.log(listingId);
+    getOneListing(listingId).then(listing => {
       //console.log('do i get inside DidMount?');
+      console.log('inside onLove, after dispatch', listing);
       this.setState({
         hostInfo: listing
       });
     });
+
+    console.log('whats in the state', this.state.hostInfo);
   };
 }

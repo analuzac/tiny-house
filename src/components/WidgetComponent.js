@@ -3,7 +3,8 @@ import React from 'react';
 export default function WidgetComponent({ hostInfo, onLove }) {
   function handleLove(event) {
     event.preventDefault();
-    onLove();
+    console.log('inside WidgetComponent', event);
+    onLove(hostInfo);
   }
   return (
     <div className="row">

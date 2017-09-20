@@ -2,7 +2,11 @@ import React from 'react';
 
 import WidgetComponent from './WidgetComponent';
 
-export default function ViewListingsPageLayout({ listingItems, hostInfo }) {
+export default function ViewListingsPageLayout({
+  listingItems,
+  hostInfo,
+  onLove
+}) {
   //console.log(listingItems);
   if (listingItems !== null) {
     return (
@@ -31,7 +35,11 @@ export default function ViewListingsPageLayout({ listingItems, hostInfo }) {
           <div className="section">
             <div className="row">
               {listingItems.map(listingItem =>
-                <WidgetComponent key={listingItem.id} hostInfo={listingItem} />
+                <WidgetComponent
+                  key={listingItem.id}
+                  hostInfo={listingItem}
+                  onLove={onLove}
+                />
               )}
             </div>
           </div>

@@ -7,12 +7,12 @@ export default function EditableWidgetComponent({
 }) {
   function handleDelete(event) {
     event.preventDefault();
-    onDelete();
+    onDelete(hostInfo);
   }
 
   function handleEdit(event) {
     event.preventDefault();
-    onEdit();
+    onEdit(hostInfo);
   }
 
   return (
@@ -30,22 +30,24 @@ export default function EditableWidgetComponent({
               </p>
             </div>
           </div>
-          <div class="card-content">
+          <div className="card-content">
             {/* <ul> */}
-            <p style={styles.details}>
+            <p>
+              {/* // style={styles.details} */}
               {`Available starting ${hostInfo.date}`}
             </p>
-            <p style={styles.details}>
+            <p>
+              {/* // style={styles.details} */}
               {`Amenities include access to ${hostInfo.amenities}`}
             </p>
             {/* </ul> */}
           </div>
-          <div class="card-action">
+          <div className="card-action">
             <button
               id="submit-button"
               type="submit"
               name="action"
-              style={styles.edit}
+              // style={styles.edit}
               className="btn-large waves-effect waves-light green lighten-1"
               onClick={handleEdit}>
               EDIT LISTING
@@ -54,7 +56,7 @@ export default function EditableWidgetComponent({
               id="submit-button"
               type="submit"
               name="action"
-              style={styles.delete}
+              // style={styles.delete}
               className="btn-large waves-effect waves-light green lighten-1"
               onClick={handleDelete}>
               DELETE LISTING

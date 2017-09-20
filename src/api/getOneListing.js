@@ -8,5 +8,14 @@ export default function getOneListing(listingId) {
         'Content-Type': 'application/json'
       }
     }
-  ).then(response => response.json());
+  )
+    .then(response => response.json())
+    .then(record => ({
+      id: record.id,
+      coordinates: record.fields.coordinates,
+      dimensions: record.fields.dimensions,
+      rent: record.fields.rent,
+      date: record.fields.date,
+      amenities: record.fields.amenities
+    }));
 }

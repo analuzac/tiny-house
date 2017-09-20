@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import WidgetComponent from './WidgetComponent';
 
 let hostInfo = {
+  id: 'recID',
   rent: 500,
   dimensions: 300,
   coordinates: 'Berkeley, CA',
