@@ -4,6 +4,7 @@ function loadStories() {
   // Require your stories here...
   require('../src/components/FormComponent.story');
   require('../src/components/WidgetComponent.story');
+  require('../src/components/DetailedWidgetComponent.story');
   require('../src/components/EditableWidgetComponent.story');
   require('../src/components/SuccessMessageComponent.story');
   require('../src/components/SuccessfulListingComponent.story');

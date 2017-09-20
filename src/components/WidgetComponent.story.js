@@ -5,7 +5,7 @@ import WidgetComponent from './WidgetComponent';
 let hostInfo = {
   rent: 500,
   dimensions: 300,
-  address: 'Berkeley, CA',
+  coordinates: 'Berkeley, CA',
   date: 'September 23, 2017',
   amenities: 'washer/dryer, water hose, compost/recycling/trash bins'
   //   imagePath: '//via.placeholder.com/300x200'

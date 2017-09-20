@@ -24,7 +24,9 @@ export default function ViewListingsPageLayout({ listingItems, hostInfo }) {
             </div>
           </nav>
         </header>
+        {/* sort & filter code */}
 
+        {/* display widgets code */}
         <div className="container">
           <div className="section">
             <div className="row">

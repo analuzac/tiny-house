@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import EditableWidgetComponent from './EditableWidgetComponent';
+import DetailedWidgetComponent from './DetailedWidgetComponent';
 
 let hostInfo = {
   rent: 500,
@@ -11,10 +11,6 @@ let hostInfo = {
   //   imagePath: '//via.placeholder.com/300x200'
 };
 
-storiesOf('EditableWidgetComponent', module).add('happy path', () =>
-  <EditableWidgetComponent
-    hostInfo={hostInfo}
-    onEdit={event => console.log(event)}
-    onDelete={event => console.log(event)}
-  />
+storiesOf('DetailedWidgetComponent', module).add('happy path', () =>
+  <DetailedWidgetComponent hostInfo={hostInfo} />
 );

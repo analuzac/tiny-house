@@ -7,53 +7,76 @@ export default function EditableWidgetComponent({
 }) {
   function handleDelete(event) {
     event.preventDefault();
-    onDelete(hostInfo);
+    onDelete();
   }
 
   function handleEdit(event) {
     event.preventDefault();
-    onEdit(hostInfo);
+    onEdit();
   }
 
   return (
     <div className="row">
-      <div className="col s12 m7">
+      <div className="col s12 m8">
         <div className="card">
           <div className="card-image">
             <img src="https://i.pinimg.com/736x/17/d6/fb/17d6fbf77448ad0c2fe0d7b8d19dceea--moss-lawn-backyard-trees.jpg" />
             <div className="card-title">
               <h4>
-                {hostInfo.address}
+                {hostInfo.coordinates}
               </h4>
               <p>
                 {`$${hostInfo.rent}/month for ${hostInfo.dimensions}sqft`}
               </p>
-              <p>
-                {`Available starting ${hostInfo.date}`}
-              </p>
-              <p>
-                {`Amenities include access to ${hostInfo.amenities}`}
-              </p>
             </div>
           </div>
-          <button
-            id="submit-button"
-            type="submit"
-            name="action"
-            className="btn-large waves-effect waves-light green lighten-1"
-            onClick={handleEdit}>
-            EDIT LISTING
-          </button>
-          <button
-            id="submit-button"
-            type="submit"
-            name="action"
-            className="btn-large waves-effect waves-light green lighten-1"
-            onClick={handleDelete}>
-            DELETE LISTING
-          </button>
+          <div class="card-content">
+            {/* <ul> */}
+            <p style={styles.details}>
+              {`Available starting ${hostInfo.date}`}
+            </p>
+            <p style={styles.details}>
+              {`Amenities include access to ${hostInfo.amenities}`}
+            </p>
+            {/* </ul> */}
+          </div>
+          <div class="card-action">
+            <button
+              id="submit-button"
+              type="submit"
+              name="action"
+              style={styles.edit}
+              className="btn-large waves-effect waves-light green lighten-1"
+              onClick={handleEdit}>
+              EDIT LISTING
+            </button>
+            <button
+              id="submit-button"
+              type="submit"
+              name="action"
+              style={styles.delete}
+              className="btn-large waves-effect waves-light green lighten-1"
+              onClick={handleDelete}>
+              DELETE LISTING
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
+const styles = {
+  edit: {
+    float: 'left'
+    // fontWeight: 'bold'
+  },
+  delete: {
+    float: 'right'
+    // fontWeight: 'bold'
+  },
+  details: {
+    paddingLeft: '25px',
+    paddingRight: '25px'
+  }
+};

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import RegisterBackyardPage from './components/RegisterBackyardPage';
 import ViewListingsPage from './components/ViewListingsPage';
+import DetailedListingPage from './components/DetailedListingPage';
 import getListings from './api/getListings';
+import getOneListing from './api/getOneListing';
 import createListing from './api/createListing';
 import deleteListing from './api/deleteListing';
 
@@ -14,12 +16,17 @@ export default class App extends Component {
     return (
       // <RegisterBackyardPage
       //   hostInfo={this.state.hostInfo}
-      //   onSubmit={this._addListing}
+      //   onSubmit={this._onSubmit}
+      //   addListing={this._addListing}
       //   onClose={this._closeSuccessMessage}
       //   onEdit={this._onEdit}
       //   onDelete={this._onDelete}
       // />
-      <ViewListingsPage listingItems={this.state.listingItems} />
+      // <ViewListingsPage listingItems={this.state.listingItems} />
+      <DetailedListingPage
+        hostInfo={this.state.hostInfo}
+        onLove={this._onLove}
+      />
     );
   }
 
@@ -95,6 +102,17 @@ export default class App extends Component {
           return wasDeleted;
         });
       }
+    });
+  };
+
+  _onLove = hostInfo => {
+    console.log('touched onLove');
+    //updateListing
+    getOneListing().then(listing => {
+      //console.log('do i get inside DidMount?');
+      this.setState({
+        hostInfo: listing
+      });
     });
   };
 }
