@@ -18,6 +18,7 @@ export default class FormComponent extends Component {
     const date = $form.date.value.trim();
     const amenities = $form.amenities.value.trim();
     const hostInfo = { coordinates, dimensions, rent, date, amenities };
+    // this.props.onSubmit(hostInfo);
     this.props.onSubmit(hostInfo);
     this.props.addListing(hostInfo);
     console.log(hostInfo);

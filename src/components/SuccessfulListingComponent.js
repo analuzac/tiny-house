@@ -1,17 +1,26 @@
 import React from 'react';
 
 import SuccessMessageComponent from './SuccessMessageComponent';
-import WidgetComponent from './WidgetComponent';
+import EditableWidgetComponent from './EditableWidgetComponent';
 
-export default function SuccessfulListingComponent({ hostInfo, onClose }) {
+export default function SuccessfulListingComponent({
+  hostInfo,
+  onClose,
+  onEdit,
+  onDelete
+}) {
   return (
-    <div class="section">
-      <div class="row">
-        <div class="col s12 m6">
+    <div className="section">
+      <div className="row">
+        <div className="col s12 m4">
           <SuccessMessageComponent hostInfo={hostInfo} onClose={onClose} />
         </div>
-        <div class="col s12 m6">
-          <WidgetComponent hostInfo={hostInfo} />
+        <div className="col s12 m8">
+          <EditableWidgetComponent
+            hostInfo={hostInfo}
+            onEdit={onEdit}
+            onDelete={onDelete}
+          />
         </div>
       </div>
     </div>
