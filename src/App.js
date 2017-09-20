@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
+
+//Page components
 import RegisterBackyardPage from './components/RegisterBackyardPage';
 import ViewListingsPage from './components/ViewListingsPage';
 import DetailedListingPage from './components/DetailedListingPage';
+
+//API utilities
 import getListings from './api/getListings';
 import getOneListing from './api/getOneListing';
 import createListing from './api/createListing';
 import deleteListing from './api/deleteListing';
 
 export default class App extends Component {
-  state = {
-    listingItems: [],
-    hostInfo: null
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      listingItems: [],
+      hostInfo: null
+    };
+
+    this.props.store.subscribe(() => {
+      this.setState(this.props.store.getState());
+    });
+  }
+
   render() {
     return (
       <RegisterBackyardPage
@@ -34,9 +47,10 @@ export default class App extends Component {
   componentDidMount() {
     getListings().then(listingItems => {
       //console.log('do i get inside DidMount?');
-      this.setState({
-        listingItems: listingItems
-      });
+      // this.setState({
+      //   listingItems: listingItems
+      // });
+      this.props.store.dispatch({ type: 'GET_LISTINGS', listingItems });
     });
   }
 
@@ -56,11 +70,15 @@ export default class App extends Component {
     console.log(composedListing);
 
     createListing(composedListing).then(listing => {
-      this.setState(prevState => {
-        const listingItems = prevState.listingItems.slice(0);
-        listingItems.push(listing);
-        return { hostInfo: listing, listingItems: listingItems };
+      this.props.store.dispatch({
+        type: 'CREATE_LISTING',
+        hostInfo: listing
       });
+      // this.setState(prevState => {
+      //   const listingItems = prevState.listingItems.slice(0);
+      //   listingItems.unshift(listing);
+      //   return { hostInfo: listing, listingItems: listingItems };
+      // });
     });
   };
 
@@ -75,9 +93,14 @@ export default class App extends Component {
 
   //In RegisterBackyardPage.js
   _closeSuccessMessage = () => {
-    this.setState({
+    this.props.store.dispatch({
+      type: 'CLOSE_SUCESS_MESSAGE',
       hostInfo: null
     });
+
+    // this.setState({
+    //   hostInfo: null
+    // });
   };
 
   //In RegisterBackyardPage.js
@@ -98,8 +121,14 @@ export default class App extends Component {
       if (listingId === listingItem.id) {
         deleteListing(listingId).then(wasDeleted => {
           //console.log('do i get inside deleteListing?');
-          this.setState({ hostInfo: null });
-          return wasDeleted;
+
+          this.props.store.dispatch({
+            type: 'DELETE_LISTING',
+            hostInfo: null
+          });
+
+          //this.setState({ hostInfo: null });
+          //return wasDeleted;
         });
       }
     });
@@ -115,9 +144,15 @@ export default class App extends Component {
     getOneListing(listingId).then(listing => {
       //console.log('do i get inside DidMount?');
       console.log('inside onLove, after dispatch', listing);
-      this.setState({
+
+      this.props.store.dispatch({
+        type: 'GET_ONE_LISTING',
         hostInfo: listing
       });
+
+      // this.setState({
+      //   hostInfo: listing
+      // });
     });
 
     console.log('whats in the state', this.state.hostInfo);
