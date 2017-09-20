@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 
+//Thunks
+import createListingProcess from './redux/thunks/createListingProcess';
+import deleteListingProcess from './redux/thunks/deleteListingProcess';
+import getOneListingProcess from './redux/thunks/getOneListingProcess';
+import getListingsProcess from './redux/thunks/getListingsProcess';
+
 //Page components
 import RegisterBackyardPage from './components/RegisterBackyardPage';
 import ViewListingsPage from './components/ViewListingsPage';
 import DetailedListingPage from './components/DetailedListingPage';
 
-//API utilities
-import getListings from './api/getListings';
-import getOneListing from './api/getOneListing';
-import createListing from './api/createListing';
-import deleteListing from './api/deleteListing';
+// //API utilities
+// import getListings from './api/getListings';
+// import getOneListing from './api/getOneListing';
+// import createListing from './api/createListing';
+// import deleteListing from './api/deleteListing';
 
 export default class App extends Component {
   constructor(props) {
@@ -45,13 +51,7 @@ export default class App extends Component {
 
   //In RegisterBackyardPage.js & ViewListingsPage.js
   componentDidMount() {
-    getListings().then(listingItems => {
-      //console.log('do i get inside DidMount?');
-      // this.setState({
-      //   listingItems: listingItems
-      // });
-      this.props.store.dispatch({ type: 'GET_LISTINGS', listingItems });
-    });
+    this.props.store.dispatch(getListingsProcess());
   }
 
   // //In RegisterBackyardPage.js to send to API
@@ -66,29 +66,14 @@ export default class App extends Component {
         amenities: hostInfo.amenities
       }
     };
-
     console.log(composedListing);
 
-    createListing(composedListing).then(listing => {
-      this.props.store.dispatch({
-        type: 'CREATE_LISTING',
-        hostInfo: listing
-      });
-      // this.setState(prevState => {
-      //   const listingItems = prevState.listingItems.slice(0);
-      //   listingItems.unshift(listing);
-      //   return { hostInfo: listing, listingItems: listingItems };
-      // });
-    });
+    this.props.store.dispatch(createListingProcess(composedListing));
   };
 
   //In RegisterBackyardPage.js for closeSucessMessage
   _submitForm = hostInfo => {
     console.log('inside submitForm', hostInfo);
-
-    // this.setState({
-    //   hostInfo: hostInfo
-    // });
   };
 
   //In RegisterBackyardPage.js
@@ -97,64 +82,24 @@ export default class App extends Component {
       type: 'CLOSE_SUCESS_MESSAGE',
       hostInfo: null
     });
-
-    // this.setState({
-    //   hostInfo: null
-    // });
   };
 
   //In RegisterBackyardPage.js
   _onEdit = hostInfo => {
-    console.log('touched onEdit');
+    console.log('inside onEdit');
     //updateListing
   };
 
   //In RegisterBackyardPage.js
   _onDelete = ({ hostInfo }) => {
-    console.log('touched onDelete');
-    //console.log(hostInfo.id);
-    let listingId = this.state.hostInfo.id;
-    //console.log(this.state.listingItems);
+    console.log('inside onDelete');
 
-    //deleteListing
-    this.state.listingItems.forEach(listingItem => {
-      if (listingId === listingItem.id) {
-        deleteListing(listingId).then(wasDeleted => {
-          //console.log('do i get inside deleteListing?');
-
-          this.props.store.dispatch({
-            type: 'DELETE_LISTING',
-            hostInfo: null
-          });
-
-          //this.setState({ hostInfo: null });
-          //return wasDeleted;
-        });
-      }
-    });
+    this.props.store.dispatch(deleteListingProcess(hostInfo));
   };
 
   _onLove = hostInfo => {
-    console.log('touched onLove');
-    //updateListing
-    console.log('whats in the state', this.state.hostInfo);
-    console.log('inside onLove, before dispatch', hostInfo);
-    let listingId = hostInfo.id;
-    //console.log(listingId);
-    getOneListing(listingId).then(listing => {
-      //console.log('do i get inside DidMount?');
-      console.log('inside onLove, after dispatch', listing);
+    console.log('inside onLove');
 
-      this.props.store.dispatch({
-        type: 'GET_ONE_LISTING',
-        hostInfo: listing
-      });
-
-      // this.setState({
-      //   hostInfo: listing
-      // });
-    });
-
-    console.log('whats in the state', this.state.hostInfo);
+    this.props.store.dispatch(getOneListingProcess(hostInfo));
   };
 }
