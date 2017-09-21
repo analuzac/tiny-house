@@ -5,7 +5,7 @@ import RegisterBackyardPage from '../../components/RegisterBackyardPage';
 
 import createListingProcess from '../thunks/createListingProcess';
 import deleteListingProcess from '../thunks/deleteListingProcess';
-import getOneListingProcess from '../thunks/getOneListingProcess';
+//import getOneListingProcess from '../thunks/getOneListingProcess';
 import getListingsProcess from '../thunks/getListingsProcess';
 
 function mapStateToProps(state, ownProps) {
@@ -35,8 +35,9 @@ function mapDispatchToProps(dispatch, ownProps) {
         type: 'CLOSE_SUCESS_MESSAGE',
         hostInfo: null
       }),
-    onDelete: hostInfo => dispatch(deleteListingProcess(hostInfo)),
-    onLove: hostInfo => dispatch(getOneListingProcess(hostInfo))
+    onDelete: hostInfo => dispatch(deleteListingProcess(hostInfo))
+    // missing: onSubmit & onEdit
+    // onLove: hostInfo => dispatch(getOneListingProcess(hostInfo))
   };
 }
 
