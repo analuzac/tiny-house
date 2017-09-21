@@ -49,4 +49,4 @@ const onDidMount = lifecycle({
   }
 });
 
-export default compose(connectToStore, onDidMount)(IndexPage);
+export default compose(connectToStore, onDidMount)(RegisterBackyardPage);
