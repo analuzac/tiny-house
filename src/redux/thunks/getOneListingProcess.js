@@ -5,7 +5,7 @@ export default function getOneListingProcess(hostInfo) {
   // as a reminder that it's available to me:
   //return (dispatch, getState, env) => {
   return (dispatch, getState) => {
-    let listingId = getState().hostInfo.id;
+    let listingId = hostInfo.id;
 
     return getOneListing(listingId).then(listing => {
       dispatch({

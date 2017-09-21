@@ -7,7 +7,6 @@ import SuccessfulListingComponent from './SuccessfulListingComponent';
 export default function RegisterBackyardPage({
   hostInfo,
   onClose,
-  onSubmit,
   onEdit,
   onDelete,
   addListing
@@ -23,7 +22,7 @@ export default function RegisterBackyardPage({
               onEdit={onEdit}
               onDelete={onDelete}
             />
-          : <FormComponent onSubmit={onSubmit} addListing={addListing} />}
+          : <FormComponent addListing={addListing} />}
       </RegisterBackyardPageLayout>
     </div>
   );

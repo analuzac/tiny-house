@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import WidgetComponent from './WidgetComponent';
 
 export default function ViewListingsPageLayout({
@@ -14,15 +16,15 @@ export default function ViewListingsPageLayout({
         <header>
           <nav>
             <div className="nav-wrapper indigo">
-              <a href="index.html" className="brand-logo">
+              <Link to="/" className="brand-logo">
                 Tiny House Hosting
-              </a>
+              </Link>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li>
-                  <a href="#!">List Your Backyard</a>
+                  <Link to="/registration">List Your Backyard</Link>
                 </li>
                 <li>
-                  <a href="#!">Explore</a>
+                  <Link to="/">Explore</Link>
                 </li>
               </ul>
             </div>

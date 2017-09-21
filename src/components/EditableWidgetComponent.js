@@ -17,7 +17,7 @@ export default function EditableWidgetComponent({
 
   return (
     <div className="row">
-      <div className="col s12 m8">
+      <div className="col s12 m9">
         <div className="card">
           <div className="card-image">
             <img src="https://i.pinimg.com/736x/17/d6/fb/17d6fbf77448ad0c2fe0d7b8d19dceea--moss-lawn-backyard-trees.jpg" />

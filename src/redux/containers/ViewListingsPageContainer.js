@@ -10,8 +10,8 @@ import getListingsProcess from '../thunks/getListingsProcess';
 
 function mapStateToProps(state, ownProps) {
   return {
-    listingItems: [],
-    hostInfo: null
+    listingItems: state.listingItems,
+    hostInfo: state.hostInfo
   };
 }
 

@@ -3,6 +3,7 @@ function loadStories() {
   require('../src/index.css');
   // Require your stories here...
   require('../src/components/FormComponent.story');
+  require('../src/components/UpdateFormComponent.story');
   require('../src/components/WidgetComponent.story');
   require('../src/components/DetailedWidgetComponent.story');
   require('../src/components/EditableWidgetComponent.story');

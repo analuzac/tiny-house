@@ -5,19 +5,21 @@ import DetailedListingPage from '../../components/DetailedListingPage';
 
 // import createListingProcess from '../thunks/createListingProcess';
 // import deleteListingProcess from '../thunks/deleteListingProcess';
-// import getOneListingProcess from '../thunks/getOneListingProcess';
+import getOneListingProcess from '../thunks/getOneListingProcess';
 // import getListingsProcess from '../thunks/getListingsProcess';
 
 function mapStateToProps(state, ownProps) {
+  //somewhere in ownProps is backyardId so don't need function onLove
+  //given backyardId, LOOK UP the correct host
   return {
-    listingItems: [],
+    listingItems: state.listingItems,
     hostInfo: state.hostInfo
   };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    // onMount: () => dispatch(getListingsProcess()),
+    //onMount: () => dispatch(getOneListingProcess())
     // addListing: hostInfo =>
     //   dispatch(
     //     createListingProcess({
@@ -42,10 +44,10 @@ function mapDispatchToProps(dispatch, ownProps) {
 
 const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 
-const onDidMount = lifecycle({
-  componentDidMount() {
-    this.props.onMount();
-  }
-});
+// const onDidMount = lifecycle({
+//   componentDidMount() {
+//     this.props.onMount();
+//   }
+// });
 
-export default compose(connectToStore, onDidMount)(DetailedListingPage);
+export default compose(connectToStore)(DetailedListingPage);
