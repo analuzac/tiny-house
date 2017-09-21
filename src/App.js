@@ -97,6 +97,7 @@ export default class App extends Component {
     this.props.store.dispatch(deleteListingProcess(hostInfo));
   };
 
+  //In ViewListingsPage.js
   _onLove = hostInfo => {
     console.log('inside onLove');
 
