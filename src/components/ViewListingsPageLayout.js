@@ -41,7 +41,13 @@ export default function ViewListingsPageLayout({
         <div className="container">
           <div className="section">
             <div className="row">
-              {<ListingsComponent hostInfo={hostInfo} onLove={onLove} />}
+              {
+                <ListingsComponent
+                  listingItems={listingItems}
+                  hostInfo={hostInfo}
+                  onLove={onLove}
+                />
+              }
             </div>
           </div>
         </div>

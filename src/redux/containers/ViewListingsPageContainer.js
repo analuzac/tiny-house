@@ -7,6 +7,7 @@ import ViewListingsPage from '../../components/ViewListingsPage';
 //import deleteListingProcess from '../thunks/deleteListingProcess';
 import getOneListingProcess from '../thunks/getOneListingProcess';
 import getListingsProcess from '../thunks/getListingsProcess';
+import getSortedFilteredListingsProcess from '../thunks/getSortedFilteredListingsProcess';
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -36,8 +37,9 @@ function mapDispatchToProps(dispatch, ownProps) {
     //     hostInfo: null
     //   }),
     // onDelete: hostInfo => dispatch(deleteListingProcess(hostInfo)),
-    onLove: hostInfo => dispatch(getOneListingProcess(hostInfo))
-    onSearch: ({sort, filter}) => dispatch(getListingsProcess())
+    onLove: hostInfo => dispatch(getOneListingProcess(hostInfo)),
+    onSearch: (sort, filter) =>
+      dispatch(getSortedFilteredListingsProcess(sort, filter))
   };
 }
 
