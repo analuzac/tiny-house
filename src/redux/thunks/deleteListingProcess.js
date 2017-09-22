@@ -6,13 +6,14 @@ export default function deleteListingProcess(hostInfo) {
   //return (dispatch, getState, env) => {
   return (dispatch, getState) => {
     let listingId = getState().hostInfo.id;
-
+    console.log('listingId', listingId);
+    console.log('listingItems', getState().listingItems);
     getState().listingItems.forEach(listingItem => {
       if (listingId === listingItem.id) {
         return deleteListing(listingId).then(wasDeleted => {
           dispatch({
             type: 'DELETE_LISTING',
-            hostInfo: null
+            hostInfo: hostInfo
           });
           return wasDeleted;
         });

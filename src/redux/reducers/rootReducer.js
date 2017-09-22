@@ -19,10 +19,10 @@ export default function rootReducer(
     case 'DELETE_LISTING':
       return {
         ...currentState,
-        hostInfo: null,
         listingItems: currentState.listingItems.filter(
           listingItem => listingItem.id !== action.hostInfo.id
-        )
+        ),
+        hostInfo: null
       };
     case 'GET_ONE_LISTING':
       return {
@@ -32,6 +32,7 @@ export default function rootReducer(
     case 'UPDATE_LISTING':
       return {
         ...currentState,
+        hostInfo: action.hostInfo,
         listingItems: currentState.listingItems.map(
           listingItem =>
             listingItem.id === action.hostInfo.id

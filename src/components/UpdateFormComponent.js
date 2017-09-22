@@ -29,11 +29,11 @@ export default class UpdateFormComponent extends Component {
       : this.props.hostInfo.coordinates;
 
     const dimensions = $form.dimensions.value
-      ? $form.dimensions.value.trim()
+      ? Number($form.dimensions.value.trim())
       : this.props.hostInfo.dimensions;
 
     const rent = $form.rent.value
-      ? $form.rent.value.trim()
+      ? Number($form.rent.value.trim())
       : this.props.hostInfo.rent;
 
     const date = $form.date.value

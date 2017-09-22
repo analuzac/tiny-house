@@ -9,7 +9,7 @@ export default function EditableWidgetComponent({ hostInfo, onDelete }) {
     event.preventDefault();
     onDelete(hostInfo);
   }
-  let tempState = { form: false };
+  //let tempState = { form: false };
 
   function handleEdit(event) {
     event.preventDefault();

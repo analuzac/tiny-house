@@ -1,7 +1,8 @@
 export default function updateListing(listingId, changes) {
-  console.log('this is request input', listingId);
-  console.log('this is request input', changes);
   delete changes.id;
+  console.log('this is request input listingId', listingId);
+  console.log('this is request input changes', changes);
+
   return fetch(
     `https://api.airtable.com/v0/appHq8T1Eu4rcibs9/TinyHouse/${listingId}`,
     {
