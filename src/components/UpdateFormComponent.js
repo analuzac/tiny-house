@@ -5,47 +5,59 @@ export default class UpdateFormComponent extends Component {
     super(props);
     this.state = {
       showBody: true,
-      hasValidationErrors: false,
-      hostInfo: {
-        rent: 500,
-        dimensions: 300,
-        coordinates: 'Berkeley, CA',
-        date: 'September 23, 2017',
-        amenities: 'washer/dryer, water hose, compost/recycling/trash bins'
-        //   imagePath: '//via.placeholder.com/300x200'
-      }
+      hasValidationErrors: false
+      // hostInfo: hostInfo
+      // {
+      //   rent: 500,
+      //   dimensions: 300,
+      //   coordinates: 'Berkeley, CA',
+      //   date: 'September 23, 2017',
+      //   amenities: 'washer/dryer, water hose, compost/recycling/trash bins'
+      //   //   imagePath: '//via.placeholder.com/300x200'
+      // }
     };
   }
 
   handleSubmit = event => {
     event.preventDefault();
+    //console.log(updatedHostInfo, 'Ahhhhhhhhhhhh');
 
     const $form = event.target;
 
     const coordinates = $form.coordinates.value
       ? $form.coordinates.value.trim()
-      : this.state.hostInfo.coordinates;
+      : this.props.hostInfo.coordinates;
 
     const dimensions = $form.dimensions.value
       ? $form.dimensions.value.trim()
-      : this.state.hostInfo.dimensions;
+      : this.props.hostInfo.dimensions;
 
     const rent = $form.rent.value
       ? $form.rent.value.trim()
-      : this.state.hostInfo.rent;
+      : this.props.hostInfo.rent;
 
     const date = $form.date.value
       ? $form.date.value.trim()
-      : this.state.hostInfo.date;
+      : this.props.hostInfo.date;
 
     const amenities = $form.amenities.value
       ? $form.amenities.value.trim()
-      : this.state.hostInfo.amenities;
+      : this.props.hostInfo.amenities;
 
-    const updatedHostInfo = { coordinates, dimensions, rent, date, amenities };
+    const id = this.props.hostInfo.id;
+
+    const updatedHostInfo = {
+      id,
+      coordinates,
+      dimensions,
+      rent,
+      date,
+      amenities
+    };
     // this.props.onSubmit(hostInfo);
-    //this.props.updateListing(updatedHostInfo);
-    console.log(updatedHostInfo);
+
+    console.log(updatedHostInfo, 'Ahhhhhhhhhhhh');
+    this.props.onUpdate(updatedHostInfo);
 
     //let regPhone = /(?:\d{3}|\(\d{3}\))([-\/\.])\d{3}\1\d{4}/;
     // let regPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -59,7 +71,7 @@ export default class UpdateFormComponent extends Component {
 
   render() {
     console.log(this.state, 'these are the props');
-    console.log('this is hostInfo', this.state.hostInfo);
+    console.log('this is hostInfo', this.props.hostInfo);
     return (
       <form id="form" className="col s12 m12" onSubmit={this.handleSubmit}>
         <div className="row">
@@ -70,7 +82,7 @@ export default class UpdateFormComponent extends Component {
               type="text"
               className="validate"
               // placeholder="Host coordinates"
-              placeholder={this.state.hostInfo.coordinates}
+              placeholder={this.props.hostInfo.coordinates}
             />
           </div>
         </div>
@@ -83,7 +95,7 @@ export default class UpdateFormComponent extends Component {
               type="tel"
               className="validate"
               // placeholder="Backyard dimensions"
-              placeholder={this.state.hostInfo.dimensions}
+              placeholder={this.props.hostInfo.dimensions}
             />
           </div>
         </div>
@@ -96,7 +108,7 @@ export default class UpdateFormComponent extends Component {
               type="text"
               className="validate"
               // placeholder="Desired rent"
-              placeholder={this.state.hostInfo.rent}
+              placeholder={this.props.hostInfo.rent}
             />
           </div>
         </div>
@@ -109,7 +121,7 @@ export default class UpdateFormComponent extends Component {
               type="text"
               className="validate"
               // placeholder="Projected earliest move-in date"
-              placeholder={this.state.hostInfo.date}
+              placeholder={this.props.hostInfo.date}
             />
           </div>
         </div>
@@ -124,7 +136,7 @@ export default class UpdateFormComponent extends Component {
               type="text"
               className="validate"
               //placeholder="Available amenities"
-              placeholder={this.state.hostInfo.amenities}
+              placeholder={this.props.hostInfo.amenities}
               //value="WATER"
             />
           </div>
@@ -136,7 +148,7 @@ export default class UpdateFormComponent extends Component {
             type="submit"
             name="action"
             className="btn-large waves-effect waves-light green lighten-1">
-            SUBMIT LISTING
+            UPDATE
           </button>
           {this.state.hasValidationErrors &&
             <p style={styles.errorStyle}>Please submit valid inputs</p>}

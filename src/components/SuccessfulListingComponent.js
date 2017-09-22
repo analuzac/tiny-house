@@ -6,7 +6,7 @@ import EditableWidgetComponent from './EditableWidgetComponent';
 export default function SuccessfulListingComponent({
   hostInfo,
   onClose,
-  onEdit,
+  // onEdit,
   onDelete
 }) {
   return (
@@ -18,7 +18,7 @@ export default function SuccessfulListingComponent({
         <div className="col s12 m8">
           <EditableWidgetComponent
             hostInfo={hostInfo}
-            onEdit={onEdit}
+            // onEdit={onEdit}
             onDelete={onDelete}
           />
         </div>

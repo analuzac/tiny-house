@@ -1,18 +1,20 @@
 import React from 'react';
 
-export default function EditableWidgetComponent({
-  hostInfo,
-  onEdit,
-  onDelete
-}) {
+import { Link } from 'react-router-dom';
+
+import UpdateFormComponent from './UpdateFormComponent';
+
+export default function EditableWidgetComponent({ hostInfo, onDelete }) {
   function handleDelete(event) {
     event.preventDefault();
     onDelete(hostInfo);
   }
+  let tempState = { form: false };
 
   function handleEdit(event) {
     event.preventDefault();
-    onEdit(hostInfo);
+    console.log('inside handleEdit');
+    //onUpdate(hostInfo);
   }
 
   return (
@@ -43,15 +45,16 @@ export default function EditableWidgetComponent({
             {/* </ul> */}
           </div>
           <div className="card-action">
-            <button
+            <Link
               id="submit-button"
               type="submit"
               name="action"
               // style={styles.edit}
               className="btn-large waves-effect waves-light green lighten-1"
-              onClick={handleEdit}>
+              // onClick={handleEdit}
+              to="/registration/update">
               EDIT LISTING
-            </button>
+            </Link>
             <button
               id="submit-button"
               type="submit"

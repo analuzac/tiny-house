@@ -29,6 +29,16 @@ export default function rootReducer(
         ...currentState,
         hostInfo: action.hostInfo
       };
+    case 'UPDATE_LISTING':
+      return {
+        ...currentState,
+        listingItems: currentState.listingItems.map(
+          listingItem =>
+            listingItem.id === action.hostInfo.id
+              ? action.hostInfo
+              : listingItem
+        )
+      };
     default:
       return currentState;
   }
