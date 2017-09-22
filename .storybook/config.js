@@ -10,5 +10,6 @@ function loadStories() {
   require('../src/components/SuccessMessageComponent.story');
   require('../src/components/SuccessfulListingComponent.story');
   require('../src/components/ListingsComponent.story');
+  require('../src/components/SortAndFilterComponent.story');
 }
 configure(loadStories, module);

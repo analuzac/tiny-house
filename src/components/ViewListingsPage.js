@@ -9,6 +9,7 @@ export default function ViewListingsPage({ listingItems, hostInfo, onLove }) {
         listingItems={listingItems}
         hostInfo={hostInfo}
         onLove={onLove}
+        onSearch={onSearch}
       />
     </div>
   );

@@ -2,12 +2,14 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import WidgetComponent from './WidgetComponent';
+import ListingsComponent from './ListingsComponent';
+import SortAndFilterComponent from './SortAndFilterComponent';
 
 export default function ViewListingsPageLayout({
   listingItems,
   hostInfo,
-  onLove
+  onLove,
+  onSearch
 }) {
   //console.log(listingItems);
   if (listingItems !== null) {
@@ -31,18 +33,15 @@ export default function ViewListingsPageLayout({
           </nav>
         </header>
         {/* sort & filter code */}
+        <div className="row">
+          {<SortAndFilterComponent onSearch={onSearch} />}
+        </div>
 
         {/* display widgets code */}
         <div className="container">
           <div className="section">
             <div className="row">
-              {listingItems.map(listingItem =>
-                <WidgetComponent
-                  key={listingItem.id}
-                  hostInfo={listingItem}
-                  onLove={onLove}
-                />
-              )}
+              {<ListingsComponent hostInfo={hostInfo} onLove={onLove} />}
             </div>
           </div>
         </div>

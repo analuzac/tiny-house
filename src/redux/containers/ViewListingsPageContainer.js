@@ -37,6 +37,7 @@ function mapDispatchToProps(dispatch, ownProps) {
     //   }),
     // onDelete: hostInfo => dispatch(deleteListingProcess(hostInfo)),
     onLove: hostInfo => dispatch(getOneListingProcess(hostInfo))
+    onSearch: ({sort, filter}) => dispatch(getListingsProcess())
   };
 }
 
