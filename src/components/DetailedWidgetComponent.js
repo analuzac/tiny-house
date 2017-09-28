@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default function DetailedWidgetComponent({ hostInfo }) {
+import { Link } from 'react-router-dom';
+
+export default function DetailedWidgetComponent({ hostInfo, onClear }) {
+  function handleClear(event) {
+    onClear();
+  }
+
   return (
     <div className="row">
       <div className="col s12 m8">
@@ -15,6 +21,12 @@ export default function DetailedWidgetComponent({ hostInfo }) {
                 {`$${hostInfo.rent}/month for ${hostInfo.dimensions}sqft`}
               </p>
             </div>
+            <Link
+              onClick={handleClear}
+              to={'/'}
+              className="btn-floating halfway-fab waves-effect waves-light red">
+              <i className="material-icons">clear</i>
+            </Link>
           </div>
           <div class="card-content">
             {/* <ul> */}

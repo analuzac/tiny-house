@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import DetailedWidgetComponent from './DetailedWidgetComponent';
 
-export default function DetailedListingPageLayout({ hostInfo }) {
+export default function DetailedListingPageLayout({ hostInfo, onClear }) {
   if (hostInfo !== null) {
     return (
       <div className="DetailedListingPageLayout">
@@ -29,7 +29,7 @@ export default function DetailedListingPageLayout({ hostInfo }) {
         <div className="container">
           <div className="section">
             <div className="row">
-              <DetailedWidgetComponent hostInfo={hostInfo} />
+              <DetailedWidgetComponent hostInfo={hostInfo} onClear={onClear} />
             </div>
           </div>
         </div>

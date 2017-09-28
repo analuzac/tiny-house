@@ -54,7 +54,7 @@ export default class FormComponent extends Component {
             <i className="material-icons prefix green-text">crop_landscape</i>
             <input
               id="dimensions"
-              type="tel"
+              type="number"
               className="validate"
               placeholder="Backyard dimensions"
               required
@@ -67,7 +67,7 @@ export default class FormComponent extends Component {
             <i className="material-icons prefix green-text">attach_money</i>
             <input
               id="rent"
-              type="text"
+              type="number"
               className="validate"
               placeholder="Desired rent"
               required
@@ -80,7 +80,7 @@ export default class FormComponent extends Component {
             <i className="material-icons prefix green-text">date_range</i>
             <input
               id="date"
-              type="text"
+              type="tel"
               className="validate"
               placeholder="Projected earliest move-in date"
               required

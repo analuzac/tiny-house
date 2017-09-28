@@ -44,7 +44,7 @@ export default class SortAndFilterComponent extends Component {
               id="filter"
               type="text"
               className="validate"
-              placeholder="Filter by"
+              placeholder="Filter by (e.g. Berkeley, CA)"
             />
             <div className="row center">
               <button
@@ -65,7 +65,7 @@ export default class SortAndFilterComponent extends Component {
               id="sort"
               type="text"
               className="validate"
-              placeholder="Sort by"
+              placeholder="Sort by (e.g. rent)"
             />
           </div>
           <div className="row center">

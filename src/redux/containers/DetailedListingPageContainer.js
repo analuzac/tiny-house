@@ -39,6 +39,12 @@ function mapDispatchToProps(dispatch, ownProps) {
     //   }),
     // onDelete: hostInfo => dispatch(deleteListingProcess(hostInfo)),
     // onLove: hostInfo => dispatch(getOneListingProcess(hostInfo))
+
+    onClear: () =>
+      dispatch({
+        type: 'CLOSE_ONE_LISTING',
+        hostInfo: null
+      })
   };
 }
 

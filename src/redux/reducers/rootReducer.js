@@ -24,11 +24,6 @@ export default function rootReducer(
         ),
         hostInfo: null
       };
-    case 'GET_ONE_LISTING':
-      return {
-        ...currentState,
-        hostInfo: action.hostInfo
-      };
     case 'UPDATE_LISTING':
       return {
         ...currentState,
@@ -39,6 +34,16 @@ export default function rootReducer(
               ? action.hostInfo
               : listingItem
         )
+      };
+    case 'GET_ONE_LISTING':
+      return {
+        ...currentState,
+        hostInfo: action.hostInfo
+      };
+    case 'CLOSE_ONE_LISTING':
+      return {
+        ...currentState,
+        hostInfo: action.hostInfo
       };
     default:
       return currentState;
