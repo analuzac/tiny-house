@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import ViewListingsPage from '../../components/ViewListingsPage';
 
-//import createListingProcess from '../thunks/createListingProcess';
-//import deleteListingProcess from '../thunks/deleteListingProcess';
 import getOneListingProcess from '../thunks/getOneListingProcess';
 import getListingsProcess from '../thunks/getListingsProcess';
 import getSortedFilteredListingsProcess from '../thunks/getSortedFilteredListingsProcess';
@@ -17,26 +15,10 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
+  //somewhere in ownProps is backyardId so don't need function onLove
+  //given backyardId, LOOK UP the correct host
   return {
     onMount: () => dispatch(getListingsProcess()),
-    // addListing: hostInfo =>
-    //   dispatch(
-    //     createListingProcess({
-    //       fields: {
-    //         coordinates: hostInfo.coordinates,
-    //         dimensions: Number(hostInfo.dimensions),
-    //         rent: Number(hostInfo.rent),
-    //         date: hostInfo.date,
-    //         amenities: hostInfo.amenities
-    //       }
-    //     })
-    //   ),
-    // onClose: () =>
-    //   dispatch({
-    //     type: 'CLOSE_SUCESS_MESSAGE',
-    //     hostInfo: null
-    //   }),
-    // onDelete: hostInfo => dispatch(deleteListingProcess(hostInfo)),
     onLove: hostInfo => dispatch(getOneListingProcess(hostInfo)),
     onSearch: (sort, filter) =>
       dispatch(getSortedFilteredListingsProcess(sort, filter))

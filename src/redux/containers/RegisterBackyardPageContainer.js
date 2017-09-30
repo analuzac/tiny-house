@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 
 import RegisterBackyardPage from '../../components/RegisterBackyardPage';
 
-//import updateListingProcess from '../thunks/updateListingProcess';
 import createListingProcess from '../thunks/createListingProcess';
 import deleteListingProcess from '../thunks/deleteListingProcess';
-//import getOneListingProcess from '../thunks/getOneListingProcess';
 import getListingsProcess from '../thunks/getListingsProcess';
 
 function mapStateToProps(state, ownProps) {
@@ -37,10 +35,6 @@ function mapDispatchToProps(dispatch, ownProps) {
         hostInfo: null
       }),
     onDelete: hostInfo => dispatch(deleteListingProcess(hostInfo))
-    // missing: onSubmit
-    // onLove: hostInfo => dispatch(getOneListingProcess(hostInfo))
-    //onUpdate: hostInfo => dispatch(updateListingProcess(hostInfo))
-    //////////////onEdit:
   };
 }
 
