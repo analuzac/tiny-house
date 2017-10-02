@@ -1,8 +1,8 @@
 //sort=[{field: "rent", direction: "desc"}]
 
 export default function getSortedFilteredListings(sort, filter) {
-  console.log('>>>>>>>>>>>>>', sort);
-  console.log('>>>>>>>>>>>>>', filter);
+  //console.log('>>>>>>>>>>>>>', sort);
+  //console.log('>>>>>>>>>>>>>', filter);
   //let filter = 'Berkeley, CA';
   const filterVar = filter
     ? '&filterByFormula=' + encodeURI(`({coordinates} = '${filter}')`)
@@ -23,7 +23,7 @@ export default function getSortedFilteredListings(sort, filter) {
   )
     .then(response => response.json())
     .then(data => {
-      console.log('ma data', data);
+      //console.log('ma data', data);
       // debugger;
       return data.records.map(record => {
         return {

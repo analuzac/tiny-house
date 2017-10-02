@@ -10,12 +10,15 @@ export default function getOneListing(listingId) {
     }
   )
     .then(response => response.json())
-    .then(record => ({
-      id: record.id,
-      coordinates: record.fields.coordinates,
-      dimensions: record.fields.dimensions,
-      rent: record.fields.rent,
-      date: record.fields.date,
-      amenities: record.fields.amenities
-    }));
+    .then(record => {
+      //console.log('ma record', record);
+      return {
+        id: record.id,
+        coordinates: record.fields.coordinates,
+        dimensions: record.fields.dimensions,
+        rent: record.fields.rent,
+        date: record.fields.date,
+        amenities: record.fields.amenities
+      };
+    });
 }

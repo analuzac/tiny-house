@@ -19,7 +19,7 @@ export default function getListings(/* { filter } */) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log('ma data', data);
+      //console.log('ma data', data);
       // debugger;
       return data.records.map(record => {
         return {
