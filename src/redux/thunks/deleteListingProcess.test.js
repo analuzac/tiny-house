@@ -9,13 +9,14 @@ import data from '../mock-data';
 
 describe('deleteListingProcess', () => {
   it('Calls deleteListing API utility and dispatches DELETE_LISTING action', () => {
+    let getState = () => ({ listingItems: data.listings });
     const thunk = deleteListingProcess(data.listings[0]);
     expect(typeof thunk).toBe('function');
 
     deleteListing.mockReturnValueOnce(Promise.resolve({ ...data.listings[0] }));
 
     const dispatch = jest.fn();
-    const getState = () => ({});
+    //getState = () => ({});
 
     return thunk(dispatch, getState, {}).then(() => {
       expect(deleteListing).toBeCalled();

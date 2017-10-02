@@ -5,7 +5,8 @@ export default function deleteListingProcess(hostInfo) {
   // as a reminder that it's available to me:
   //return (dispatch, getState, env) => {
   return (dispatch, getState) => {
-    let listingId = getState().hostInfo.id;
+    // let listingId = getState().hostInfo.id;
+    let listingId = hostInfo.id;
     console.log('listingId', listingId);
     console.log('listingItems', getState().listingItems);
     getState().listingItems.forEach(listingItem => {

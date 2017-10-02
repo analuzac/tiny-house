@@ -6,8 +6,8 @@ export default function updateListingProcess(hostInfo) {
   //return (dispatch, getState, env) => {
   return (dispatch, getState) => {
     let listingId = hostInfo.id;
-    console.log(hostInfo, 'inside procces');
-    console.log('listingId', listingId);
+    //console.log(hostInfo, 'inside procces');
+    //console.log('listingId', listingId);
     return updateListing(listingId, hostInfo).then(updatedListing => {
       dispatch({
         type: 'UPDATE_LISTING',
