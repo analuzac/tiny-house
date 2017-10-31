@@ -1,3 +1,5 @@
+import { API_BASE_URL } from '../env';
+
 //sort=[{field: "rent", direction: "desc"}]
 
 export default function getListings(/* { filter } */) {
@@ -10,7 +12,8 @@ export default function getListings(/* { filter } */) {
 
   // `https://api.airtable.com/v0/appHq8T1Eu4rcibs9/TinyHouse?${sort}${filter}`,
 
-  return fetch('https://api.airtable.com/v0/appHq8T1Eu4rcibs9/TinyHouse?', {
+  return fetch(`${API_BASE_URL}`, {
+    // fetch('https://api.airtable.com/v0/appHq8T1Eu4rcibs9/TinyHouse?', {
     method: 'GET',
     headers: {
       Authorization: 'Bearer keyE9lXfaaEAGEG23',
