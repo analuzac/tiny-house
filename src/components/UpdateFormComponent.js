@@ -10,7 +10,7 @@ export default class UpdateFormComponent extends Component {
       // {
       //   rent: 500,
       //   dimensions: 300,
-      //   coordinates: 'Berkeley, CA',
+      //   location: 'Berkeley, CA',
       //   date: 'September 23, 2017',
       //   amenities: 'washer/dryer, water hose, compost/recycling/trash bins'
       //   //   imagePath: '//via.placeholder.com/300x200'
@@ -24,9 +24,9 @@ export default class UpdateFormComponent extends Component {
 
     const $form = event.target;
 
-    const coordinates = $form.coordinates.value
-      ? $form.coordinates.value.trim()
-      : this.props.hostInfo.coordinates;
+    const location = $form.location.value
+      ? $form.location.value.trim()
+      : this.props.hostInfo.location;
 
     const dimensions = $form.dimensions.value
       ? Number($form.dimensions.value.trim())
@@ -48,7 +48,7 @@ export default class UpdateFormComponent extends Component {
 
     const updatedHostInfo = {
       id,
-      coordinates,
+      location,
       dimensions,
       rent,
       date,
@@ -78,11 +78,11 @@ export default class UpdateFormComponent extends Component {
           <div className="input-field col s12 m12">
             <i className="material-icons prefix green-text">home</i>
             <input
-              id="coordinates"
+              id="location"
               type="text"
               className="validate"
-              // placeholder="Host coordinates"
-              placeholder={this.props.hostInfo.coordinates}
+              // placeholder="Host location"
+              placeholder={this.props.hostInfo.location}
             />
           </div>
         </div>

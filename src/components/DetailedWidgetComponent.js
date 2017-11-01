@@ -15,7 +15,7 @@ export default function DetailedWidgetComponent({ hostInfo, onClear }) {
             <img src="https://i.pinimg.com/736x/17/d6/fb/17d6fbf77448ad0c2fe0d7b8d19dceea--moss-lawn-backyard-trees.jpg" />
             <div className="card-title">
               <h4>
-                {hostInfo.coordinates}
+                {hostInfo.location}
               </h4>
               <p>
                 {`$${hostInfo.rent}/month for ${hostInfo.dimensions}sqft`}

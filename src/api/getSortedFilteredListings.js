@@ -5,7 +5,7 @@ export default function getSortedFilteredListings(sort, filter) {
   //console.log('>>>>>>>>>>>>>', filter);
   //let filter = 'Berkeley, CA';
   const filterVar = filter
-    ? '&filterByFormula=' + encodeURI(`({coordinates} = '${filter}')`)
+    ? '&filterByFormula=' + encodeURI(`({location} = '${filter}')`)
     : '';
 
   // this didn't work --> const sortBy = encodeURI('[{field: "rent", direction: "desc"}]');
@@ -28,7 +28,7 @@ export default function getSortedFilteredListings(sort, filter) {
       return data.records.map(record => {
         return {
           id: record.id,
-          coordinates: record.fields.coordinates,
+          location: record.fields.location,
           dimensions: record.fields.dimensions,
           rent: record.fields.rent,
           date: record.fields.date,

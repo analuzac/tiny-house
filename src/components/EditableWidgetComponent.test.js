@@ -6,7 +6,7 @@ describe('EditableWidgetComponent', () => {
   let hostInfo = {
     rent: 500,
     dimensions: 300,
-    coordinates: 'Berkeley, CA',
+    location: 'Berkeley, CA',
     date: 'September 23, 2017',
     amenities: 'washer/dryer, water hose, compost/recycling/trash bins'
     //   imagePath: '//via.placeholder.com/300x200'
@@ -16,7 +16,7 @@ describe('EditableWidgetComponent', () => {
     const wrapper = shallow(
       <EditableWidgetComponent hostInfo={hostInfo} onDelete={onDelete} />
     );
-    expect(wrapper.find('h4').text()).toBe(hostInfo.coordinates);
+    expect(wrapper.find('h4').text()).toBe(hostInfo.location);
   });
 
   it('Triggers onDelete', () => {

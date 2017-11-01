@@ -27,7 +27,7 @@ export default function WidgetComponent({ hostInfo, onLove }) {
           </Link>
           <div className="card-title">
             <h4>
-              {hostInfo.coordinates}
+              {hostInfo.location}
             </h4>
             <p>
               {`$${hostInfo.rent}/month for ${hostInfo.dimensions}sqft`}

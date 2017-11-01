@@ -12,12 +12,12 @@ export default class FormComponent extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const $form = event.target;
-    const coordinates = $form.coordinates.value.trim();
+    const location = $form.location.value.trim();
     const dimensions = $form.dimensions.value.trim();
     const rent = $form.rent.value.trim();
     const date = $form.date.value.trim();
     const amenities = $form.amenities.value.trim();
-    const hostInfo = { coordinates, dimensions, rent, date, amenities };
+    const hostInfo = { location, dimensions, rent, date, amenities };
     // this.props.onSubmit(hostInfo);
     this.props.addListing(hostInfo);
     console.log(hostInfo);
@@ -40,10 +40,10 @@ export default class FormComponent extends Component {
           <div className="input-field col s12 m12">
             <i className="material-icons prefix green-text">home</i>
             <input
-              id="coordinates"
+              id="location"
               type="text"
               className="validate"
-              placeholder="Host coordinates"
+              placeholder="Host location"
               required
             />
           </div>

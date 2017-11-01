@@ -1,29 +1,17 @@
+import env from '../env';
+
 export default function createListing(listing) {
-  return fetch('https://api.airtable.com/v0/appHq8T1Eu4rcibs9/TinyHouse', {
+  return fetch(`${env.API_BASE_URL}/users/1/listings`, {
+    // For when i have userId ready:
+    // return fetch(`${env.API_BASE_URL}/users/${userId}/listings`, {
+    //
     method: 'POST',
     headers: {
-      Authorization: 'Bearer keyE9lXfaaEAGEG23',
+      // Authorization: 'Bearer keyE9lXfaaEAGEG23',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(listing)
-  })
-    .then(response => response.json())
-    .then(record => ({
-      id: record.id,
-      coordinates: record.fields.coordinates,
-      dimensions: record.fields.dimensions,
-      rent: record.fields.rent,
-      date: record.fields.date,
-      amenities: record.fields.amenities
-    }));
+    body: JSON.stringify(listing.fields)
+  }).then(response => {
+    return response.json();
+  });
 }
-
-// {
-//   fields: {
-//     coordinates: 'Berkeley, CA',
-//     dimensions: 300,
-//     rent: 500,
-//     date: 'October 1st, 2017',
-//     amenities: 'water, recycling, compost'
-//   }
-// }

@@ -21,7 +21,7 @@ function mapDispatchToProps(dispatch, ownProps) {
       dispatch(
         createListingProcess({
           fields: {
-            coordinates: hostInfo.coordinates,
+            location: hostInfo.location,
             dimensions: Number(hostInfo.dimensions),
             rent: Number(hostInfo.rent),
             date: hostInfo.date,
