@@ -1,7 +1,9 @@
 export default function rootReducer(
   currentState = {
     listingItems: [],
-    hostInfo: null
+    hostInfo: null,
+    userInfo: null,
+    newUser: null
   },
   action
 ) {
@@ -44,6 +46,16 @@ export default function rootReducer(
       return {
         ...currentState,
         hostInfo: action.hostInfo
+      };
+    case 'GET_TOKEN':
+      return {
+        ...currentState,
+        userInfo: action.userInfo
+      };
+    case 'CREATE_USER':
+      return {
+        ...currentState,
+        newUser: action.newUser
       };
     default:
       return currentState;
