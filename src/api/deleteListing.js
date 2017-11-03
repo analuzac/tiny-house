@@ -1,12 +1,14 @@
 import env from '../env';
 
 export default function deleteListing(listingId) {
+  let storedToken = localStorage.getItem('token');
   return fetch(`${env.API_BASE_URL}/listings/${listingId}`, {
-    method: 'DELETE'
-    // headers: {
-    //   Authorization: 'Bearer keyE9lXfaaEAGEG23',
-    //   'Content-Type': 'application/json'
-    //}
+    method: 'DELETE',
+    headers: {
+      Authorization: storedToken,
+      // Authorization: 'Bearer keyE9lXfaaEAGEG23',
+      'Content-Type': 'application/json'
+    }
   }).then(response => {
     return response.json();
   });
