@@ -16,6 +16,12 @@ export default function UpdateListingPageLayout({ hostInfo, onUpdate }) {
               </Link>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li>
+                  <Link to="/signup">Sign Up</Link>
+                </li>
+                <li>
+                  <Link to="/login">Log In</Link>
+                </li>
+                <li>
                   <Link to="/registration">List Your Backyard</Link>
                 </li>
                 <li>
