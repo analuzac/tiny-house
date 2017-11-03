@@ -9,7 +9,12 @@ export default function deleteListing(listingId) {
       // Authorization: 'Bearer keyE9lXfaaEAGEG23',
       'Content-Type': 'application/json'
     }
-  }).then(response => {
-    return response.json();
-  });
+  })
+    .then(response => {
+      console.log('RESPONSE', response);
+      return response.json();
+    })
+    .catch(err => {
+      console.log('THE_ERR', err);
+    });
 }

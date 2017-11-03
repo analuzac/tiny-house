@@ -7,12 +7,21 @@ export default function getOneListingProcess(hostInfo) {
   return (dispatch, getState) => {
     let listingId = hostInfo.id;
 
-    return getOneListing(listingId).then(listing => {
-      dispatch({
-        type: 'GET_ONE_LISTING',
-        hostInfo: listing
+    return getOneListing(listingId)
+      .then(listing => {
+        dispatch({
+          type: 'GET_ONE_LISTING',
+          hostInfo: listing
+        });
+        return listing;
+      })
+      .catch(err => {
+        console.log('what is going on', err);
+        dispatch({
+          type: 'GET_ONE_LISTING',
+          hostInfo: null,
+          error: err
+        });
       });
-      return listing;
-    });
   };
 }

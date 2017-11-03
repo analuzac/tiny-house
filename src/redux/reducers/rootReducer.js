@@ -3,7 +3,8 @@ export default function rootReducer(
     listingItems: [],
     hostInfo: null,
     userInfo: null,
-    newUser: null
+    newUser: null,
+    error: null
   },
   action
 ) {
@@ -35,12 +36,14 @@ export default function rootReducer(
             listingItem.id === action.hostInfo.id
               ? action.hostInfo
               : listingItem
-        )
+        ),
+        error: action.error
       };
     case 'GET_ONE_LISTING':
       return {
         ...currentState,
-        hostInfo: action.hostInfo
+        hostInfo: action.hostInfo,
+        error: action.error
       };
     case 'CLOSE_ONE_LISTING':
       return {

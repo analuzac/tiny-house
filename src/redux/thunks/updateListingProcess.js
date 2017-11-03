@@ -8,12 +8,21 @@ export default function updateListingProcess(hostInfo) {
     let listingId = hostInfo.id;
     //console.log(hostInfo, 'inside procces');
     //console.log('listingId', listingId);
-    return updateListing(listingId, hostInfo).then(updatedListing => {
-      dispatch({
-        type: 'UPDATE_LISTING',
-        hostInfo: updatedListing
+    return updateListing(listingId, hostInfo)
+      .then(updatedListing => {
+        dispatch({
+          type: 'UPDATE_LISTING',
+          hostInfo: updatedListing
+        });
+        return updatedListing;
+      })
+      .catch(err => {
+        console.log('what is going on', err);
+        dispatch({
+          type: 'UPDATE_LISTING',
+          hostInfo: null,
+          error: err
+        });
       });
-      return updatedListing;
-    });
   };
 }

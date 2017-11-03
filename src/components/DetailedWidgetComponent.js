@@ -3,11 +3,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function DetailedWidgetComponent({ hostInfo, onClear }) {
+  //{ hostInfo, onClear }
+  //props
+  //console.log('LE PROPS', props);
   function handleClear(event) {
     onClear();
   }
 
   return (
+    // !error ? {
     <div className="row">
       <div className="col s12 m8">
         <div className="card">
@@ -42,6 +46,7 @@ export default function DetailedWidgetComponent({ hostInfo, onClear }) {
       </div>
     </div>
   );
+  // } : <p>{error}</p>
 }
 
 const styles = {

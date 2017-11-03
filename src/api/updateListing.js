@@ -13,7 +13,12 @@ export default function updateListing(listingId, changes) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(changes)
-  }).then(response => {
-    return response.json();
-  });
+  })
+    .then(response => {
+      console.log('RESPONSE', response);
+      return response.json();
+    })
+    .catch(err => {
+      console.log('THE_ERR', err);
+    });
 }

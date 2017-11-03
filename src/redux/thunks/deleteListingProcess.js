@@ -11,13 +11,22 @@ export default function deleteListingProcess(hostInfo) {
     console.log('listingItems', getState().listingItems);
     getState().listingItems.forEach(listingItem => {
       if (listingId === listingItem.id) {
-        return deleteListing(listingId).then(wasDeleted => {
-          dispatch({
-            type: 'DELETE_LISTING',
-            hostInfo: hostInfo
+        return deleteListing(listingId)
+          .then(wasDeleted => {
+            dispatch({
+              type: 'DELETE_LISTING',
+              hostInfo: hostInfo
+            });
+            return wasDeleted;
+          })
+          .catch(err => {
+            console.log('what is going on', err);
+            dispatch({
+              type: 'GET_ONE_LISTING',
+              hostInfo: null,
+              error: err
+            });
           });
-          return wasDeleted;
-        });
       }
     });
   };

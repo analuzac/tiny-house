@@ -6,7 +6,8 @@ import DetailedListingPage from '../../components/DetailedListingPage';
 function mapStateToProps(state, ownProps) {
   return {
     listingItems: state.listingItems,
-    hostInfo: state.hostInfo
+    hostInfo: state.hostInfo,
+    error: state.error
   };
 }
 

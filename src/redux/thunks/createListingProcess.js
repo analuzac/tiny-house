@@ -5,12 +5,18 @@ export default function createListingProcess(composedListing) {
   // as a reminder that it's available to me:
   //return (dispatch, getState, env) => {
   return (dispatch, getState) => {
-    return createListing(composedListing).then(createdListing => {
-      dispatch({
-        type: 'CREATE_LISTING',
-        hostInfo: createdListing
+    console.log('INSIDE CREATE THUNK before', composedListing);
+    return createListing(composedListing)
+      .then(createdListing => {
+        console.log('INSIDE CREATE THUNK', createdListing);
+        dispatch({
+          type: 'CREATE_LISTING',
+          hostInfo: createdListing
+        });
+        return createdListing;
+      })
+      .catch(err => {
+        console.log('THE_ERR', err);
       });
-      return createdListing;
-    });
   };
 }
