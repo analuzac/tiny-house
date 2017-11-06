@@ -15,7 +15,12 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onLogIn: userInfo => dispatch(getTokenProcess(userInfo))
+    onLogIn: userInfo => dispatch(getTokenProcess(userInfo)),
+    onLogOut: () =>
+      dispatch({
+        type: 'REMOVE_TOKEN',
+        userInfo: null
+      })
   };
 }
 

@@ -2,9 +2,11 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import LogInComponent from './LogInComponent';
+//import LogInComponent from './LogInComponent';
 
-export default function LogInPageLayout({ userInfo, onLogIn }) {
+export default function LogInPageLayout({ children }) {
+  //{ userInfo, onLogIn }
+  console.log('THE PROPS', children);
   return (
     <div className="LogInPageLayout">
       <header>
@@ -34,7 +36,8 @@ export default function LogInPageLayout({ userInfo, onLogIn }) {
       <div className="container">
         <div className="section">
           <div className="row">
-            <LogInComponent userInfo={userInfo} onLogIn={onLogIn} />
+            {children}
+            {/* <LogInComponent userInfo={userInfo} onLogIn={onLogIn} /> */}
           </div>
         </div>
       </div>

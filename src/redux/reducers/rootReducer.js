@@ -50,16 +50,22 @@ export default function rootReducer(
         ...currentState,
         hostInfo: action.hostInfo
       };
-    case 'GET_TOKEN':
-      return {
-        ...currentState,
-        userInfo: action.userInfo
-      };
     case 'CREATE_USER':
       return {
         ...currentState,
         newUser: action.newUser
       };
+    case 'GET_TOKEN':
+      return {
+        ...currentState,
+        userInfo: action.userInfo
+      };
+    case 'REMOVE_TOKEN':
+      return {
+        ...currentState,
+        userInfo: action.userInfo
+      };
+
     default:
       return currentState;
   }
