@@ -5,7 +5,8 @@ import ViewListingsPage from '../../components/ViewListingsPage';
 
 import getOneListingProcess from '../thunks/getOneListingProcess';
 import getListingsProcess from '../thunks/getListingsProcess';
-import getSortedFilteredListingsProcess from '../thunks/getSortedFilteredListingsProcess';
+import getSortedListingsProcess from '../thunks/getSortedListingsProcess';
+import getFilteredListingsProcess from '../thunks/getFilteredListingsProcess';
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -20,8 +21,8 @@ function mapDispatchToProps(dispatch, ownProps) {
   return {
     onMount: () => dispatch(getListingsProcess()),
     onLove: hostInfo => dispatch(getOneListingProcess(hostInfo)),
-    onSearch: (sort, filter) =>
-      dispatch(getSortedFilteredListingsProcess(sort, filter))
+    onSort: sort => dispatch(getSortedListingsProcess(sort)),
+    onFilter: filter => dispatch(getFilteredListingsProcess(filter))
   };
 }
 

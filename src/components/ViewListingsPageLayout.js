@@ -3,13 +3,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import ListingsComponent from './ListingsComponent';
-import SortAndFilterComponent from './SortAndFilterComponent';
+import FilterComponent from './FilterComponent';
+import SortComponent from './SortComponent';
 
 export default function ViewListingsPageLayout({
   listingItems,
   hostInfo,
   onLove,
-  onSearch
+  onSort,
+  onFilter
 }) {
   //console.log(listingItems);
   if (listingItems !== null) {
@@ -40,7 +42,12 @@ export default function ViewListingsPageLayout({
         </header>
         {/* sort & filter code */}
         <div className="row">
-          {<SortAndFilterComponent onSearch={onSearch} />}
+          <div className="input-field col s12 m6">
+            {<FilterComponent onFilter={onFilter} />}
+          </div>
+          <div className="input-field col s12 m6">
+            {<SortComponent onSort={onSort} />}
+          </div>
         </div>
 
         {/* display widgets code */}

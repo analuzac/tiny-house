@@ -6,7 +6,8 @@ export default function ViewListingsPage({
   listingItems,
   hostInfo,
   onLove,
-  onSearch
+  onSort,
+  onFilter
 }) {
   return (
     <div className="ViewListingsPage">
@@ -14,7 +15,8 @@ export default function ViewListingsPage({
         listingItems={listingItems}
         hostInfo={hostInfo}
         onLove={onLove}
-        onSearch={onSearch}
+        onSort={onSort}
+        onFilter={onFilter}
       />
     </div>
   );
