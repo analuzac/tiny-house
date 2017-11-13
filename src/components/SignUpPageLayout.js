@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import SignUpComponent from './SignUpComponent';
 
-export default function SignUpPageLayout({ onSignUp, newUser }) {
+export default function SignUpPageLayout({ onSignUp, newUser, history }) {
   return (
     <div className="SignUpPageLayout">
       <header>
@@ -34,7 +34,11 @@ export default function SignUpPageLayout({ onSignUp, newUser }) {
       <div className="container">
         <div className="section">
           <div className="row">
-            <SignUpComponent newUser={newUser} onSignUp={onSignUp} />
+            <SignUpComponent
+              newUser={newUser}
+              onSignUp={onSignUp}
+              history={history}
+            />
           </div>
         </div>
       </div>

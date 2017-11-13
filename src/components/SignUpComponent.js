@@ -4,8 +4,7 @@ import React from 'react';
 // For when "Form" starts working as expected:
 // <Form to={'/login'} method="GET" ...
 
-export default function LogInComponent({ onSignUp, newUser }) {
-  //console.log('LOGIN_PROPS', props);
+export default function SignUpComponent({ onSignUp, newUser, history }) {
   function handleSubmit(event) {
     event.preventDefault();
     const $form = event.target;
@@ -15,6 +14,7 @@ export default function LogInComponent({ onSignUp, newUser }) {
     newUser.password = $form.password.value;
     console.log('USER SIGNED UP', newUser);
     onSignUp(newUser);
+    history.push('/login');
   }
 
   return (
