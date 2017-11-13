@@ -1,5 +1,9 @@
 import React from 'react';
 
+//import Form from 'react-router-form';
+// For when "Form" starts working as expected:
+// <Form to={'/login'} method="GET" ...
+
 export default function LogInComponent({ onSignUp, newUser }) {
   //console.log('LOGIN_PROPS', props);
   function handleSubmit(event) {
@@ -12,6 +16,7 @@ export default function LogInComponent({ onSignUp, newUser }) {
     console.log('USER SIGNED UP', newUser);
     onSignUp(newUser);
   }
+
   return (
     <form id="form" className="col s12 m12" onSubmit={handleSubmit}>
       <div id="title" className="col s12 m12">
