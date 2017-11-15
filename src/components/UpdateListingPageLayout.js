@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 
 import UpdateFormComponent from './UpdateFormComponent';
 
-export default function UpdateListingPageLayout({ hostInfo, onUpdate }) {
+export default function UpdateListingPageLayout({
+  hostInfo,
+  onUpdate,
+  history
+}) {
   if (hostInfo !== null) {
     return (
       <div className="UpdateListingPageLayout">
@@ -35,7 +39,11 @@ export default function UpdateListingPageLayout({ hostInfo, onUpdate }) {
         <div className="container">
           <div className="section">
             <div className="row">
-              <UpdateFormComponent hostInfo={hostInfo} onUpdate={onUpdate} />
+              <UpdateFormComponent
+                hostInfo={hostInfo}
+                onUpdate={onUpdate}
+                history={history}
+              />
             </div>
           </div>
         </div>

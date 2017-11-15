@@ -58,7 +58,7 @@ export default class UpdateFormComponent extends Component {
 
     console.log(updatedHostInfo, 'Ahhhhhhhhhhhh');
     this.props.onUpdate(updatedHostInfo);
-
+    this.props.history.push('/registration');
     //let regPhone = /(?:\d{3}|\(\d{3}\))([-\/\.])\d{3}\1\d{4}/;
     // let regPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     //
