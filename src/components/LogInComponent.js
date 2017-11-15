@@ -14,14 +14,15 @@ export default class LogInComponent extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const $form = event.target;
-    const userInfo = {};
-    userInfo.email = $form.email.value;
-    userInfo.password = $form.password.value;
+
+    const email = $form.email.value;
+    const password = $form.password.value;
+    const userInfo = { email, password };
     console.log('USER LOGGED IN', userInfo);
 
     let regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    if (userInfo.email.match(regEmail) && userInfo.password.length >= 8) {
+    if (email.match(regEmail) && password.length >= 8) {
       this.props.onLogIn(userInfo);
     } else this.setState({ hasValidationErrors: true });
   };

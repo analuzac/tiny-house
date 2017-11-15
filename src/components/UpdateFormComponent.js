@@ -6,22 +6,11 @@ export default class UpdateFormComponent extends Component {
     this.state = {
       showBody: true,
       hasValidationErrors: false
-      // hostInfo: hostInfo
-      // {
-      //   rent: 500,
-      //   dimensions: 300,
-      //   location: 'Berkeley, CA',
-      //   date: 'September 23, 2017',
-      //   amenities: 'washer/dryer, water hose, compost/recycling/trash bins'
-      //   //   imagePath: '//via.placeholder.com/300x200'
-      // }
     };
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    //console.log(updatedHostInfo, 'Ahhhhhhhhhhhh');
-
     const $form = event.target;
 
     const location = $form.location.value
@@ -29,11 +18,11 @@ export default class UpdateFormComponent extends Component {
       : this.props.hostInfo.location;
 
     const dimensions = $form.dimensions.value
-      ? Number($form.dimensions.value.trim())
+      ? $form.dimensions.value.trim()
       : this.props.hostInfo.dimensions;
 
     const rent = $form.rent.value
-      ? Number($form.rent.value.trim())
+      ? $form.rent.value.trim()
       : this.props.hostInfo.rent;
 
     const date = $form.date.value
@@ -54,24 +43,20 @@ export default class UpdateFormComponent extends Component {
       date,
       amenities
     };
-    // this.props.onSubmit(hostInfo);
 
-    console.log(updatedHostInfo, 'Ahhhhhhhhhhhh');
-    this.props.onUpdate(updatedHostInfo);
-    this.props.history.push('/registration');
-    //let regPhone = /(?:\d{3}|\(\d{3}\))([-\/\.])\d{3}\1\d{4}/;
-    // let regPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    //
-    // if (phone.match(regPhone) || name !== null || address !== null) {
-    //   this.props.onSubmit({ name, phone, address });
-    // } else {
-    //   this.setState({ hasValidationErrors: true });
-    // }
+    if (
+      updatedHostInfo.location.length >= 1 &&
+      updatedHostInfo.date.length >= 1 &&
+      updatedHostInfo.amenities.length >= 1
+    ) {
+      this.props.onUpdate(updatedHostInfo);
+      this.props.history.push('/registration');
+    } else this.setState({ hasValidationErrors: true });
   };
 
   render() {
-    console.log(this.state, 'these are the props');
-    console.log('this is hostInfo', this.props.hostInfo);
+    // console.log(this.state, 'these are the props');
+    // console.log('this is hostInfo', this.props.hostInfo);
     return (
       <form id="form" className="col s12 m12" onSubmit={this.handleSubmit}>
         <div className="row">
@@ -92,7 +77,7 @@ export default class UpdateFormComponent extends Component {
             <i className="material-icons prefix green-text">crop_landscape</i>
             <input
               id="dimensions"
-              type="tel"
+              type="number"
               className="validate"
               // placeholder="Backyard dimensions"
               placeholder={this.props.hostInfo.dimensions}
@@ -105,7 +90,7 @@ export default class UpdateFormComponent extends Component {
             <i className="material-icons prefix green-text">attach_money</i>
             <input
               id="rent"
-              type="text"
+              type="number"
               className="validate"
               // placeholder="Desired rent"
               placeholder={this.props.hostInfo.rent}
@@ -151,7 +136,7 @@ export default class UpdateFormComponent extends Component {
             UPDATE
           </button>
           {this.state.hasValidationErrors &&
-            <p style={styles.errorStyle}>Please submit valid inputs</p>}
+            <h5 style={styles.errorStyle}>Please submit valid inputs</h5>}
         </div>
       </form>
     );

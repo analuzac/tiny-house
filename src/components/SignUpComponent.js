@@ -16,15 +16,16 @@ export default class SignUpComponent extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const $form = event.target;
-    const newUser = {};
-    newUser.name = $form.name.value;
-    newUser.email = $form.email.value;
-    newUser.password = $form.password.value;
+
+    const name = $form.name.value;
+    const email = $form.email.value;
+    const password = $form.password.value;
+    const newUser = { name, email, password };
     console.log('USER SIGNED UP', newUser);
 
     let regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    if (newUser.email.match(regEmail) && newUser.password.length >= 8) {
+    if (email.match(regEmail) && password.length >= 8) {
       this.props.onSignUp(newUser);
       this.props.history.push('/login');
     } else this.setState({ hasValidationErrors: true });
