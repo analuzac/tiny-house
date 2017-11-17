@@ -15,7 +15,8 @@ export default function rootReducer(
       return {
         ...currentState,
         hostInfo: action.hostInfo,
-        listingItems: [action.hostInfo, ...currentState.listingItems]
+        listingItems: [action.hostInfo, ...currentState.listingItems],
+        errorMsg: action.errorMsg
       };
     case 'CLOSE_SUCESS_MESSAGE':
       return { ...currentState, hostInfo: action.hostInfo };
@@ -25,7 +26,8 @@ export default function rootReducer(
         listingItems: currentState.listingItems.filter(
           listingItem => listingItem.id !== action.hostInfo.id
         ),
-        hostInfo: null
+        hostInfo: null,
+        errorMsg: action.errorMsg
       };
     case 'UPDATE_LISTING':
       return {
@@ -37,13 +39,13 @@ export default function rootReducer(
               ? action.hostInfo
               : listingItem
         ),
-        error: action.error
+        errorMsg: action.errorMsg
       };
     case 'GET_ONE_LISTING':
       return {
         ...currentState,
         hostInfo: action.hostInfo,
-        error: action.error
+        errorMsg: action.errorMsg
       };
     case 'CLOSE_ONE_LISTING':
       return {
@@ -58,7 +60,8 @@ export default function rootReducer(
     case 'GET_TOKEN':
       return {
         ...currentState,
-        userInfo: action.userInfo
+        userInfo: action.userInfo,
+        errorMsg: action.errorMsg
       };
     case 'REMOVE_TOKEN':
       return {

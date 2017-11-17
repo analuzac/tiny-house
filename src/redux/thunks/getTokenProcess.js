@@ -13,7 +13,11 @@ export default function getTokenProcess(userInfo, history) {
         //return localStorage.setItem('errorMsg', userInfo);
       }
       localStorage.setItem('token', userInfo.token);
-      dispatch({ type: 'GET_TOKEN', userInfo });
+      dispatch({
+        type: 'GET_TOKEN',
+        userInfo: userInfo,
+        errorMsg: null
+      });
       return userInfo;
     });
   };

@@ -17,7 +17,8 @@ export default function getOneListingProcess(hostInfo, history) {
 
       dispatch({
         type: 'GET_ONE_LISTING',
-        hostInfo: listing
+        hostInfo: listing,
+        errorMsg: null
       });
       return listing;
     });

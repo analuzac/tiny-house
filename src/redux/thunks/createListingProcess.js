@@ -11,7 +11,8 @@ export default function createListingProcess(composedListing, history) {
       }
       dispatch({
         type: 'CREATE_LISTING',
-        hostInfo: createdListing
+        hostInfo: createdListing,
+        errorMsg: null
       });
       return createdListing;
     });

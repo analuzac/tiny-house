@@ -16,7 +16,7 @@ export default function RegisterBackyardPageLayout({ children }) {
                 <Link to="/signup">Sign Up</Link>
               </li>
               <li>
-                <Link to="/login">Log In</Link>
+                <Link to="/login">Log In / Log Out</Link>
               </li>
               <li>
                 <Link to="/registration">List Your Backyard</Link>

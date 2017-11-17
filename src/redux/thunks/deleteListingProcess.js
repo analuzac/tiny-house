@@ -18,7 +18,8 @@ export default function deleteListingProcess(hostInfo, history) {
           }
           dispatch({
             type: 'DELETE_LISTING',
-            hostInfo: hostInfo
+            hostInfo: hostInfo,
+            errorMsg: null
           });
           return wasDeleted;
         });

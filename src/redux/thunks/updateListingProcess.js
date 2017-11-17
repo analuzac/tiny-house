@@ -16,7 +16,8 @@ export default function updateListingProcess(hostInfo, history) {
       }
       dispatch({
         type: 'UPDATE_LISTING',
-        hostInfo: updatedListing
+        hostInfo: updatedListing,
+        errorMsg: null
       });
       return updatedListing;
     });
