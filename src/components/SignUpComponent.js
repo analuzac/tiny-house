@@ -86,6 +86,11 @@ export default class SignUpComponent extends Component {
           </button>
           {this.state.hasValidationErrors &&
             <h5 style={styles.errorStyle}>Please submit valid inputs</h5>}
+          {
+            <h5 style={styles.errorStyle}>
+              {this.props.errorMsg ? this.props.errorMsg : null}
+            </h5>
+          }
         </div>
       </form>
     );

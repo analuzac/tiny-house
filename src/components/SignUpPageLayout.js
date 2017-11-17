@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 
 import SignUpComponent from './SignUpComponent';
 
-export default function SignUpPageLayout({ onSignUp, newUser, history }) {
+export default function SignUpPageLayout({
+  onSignUp,
+  newUser,
+  history,
+  errorMsg
+}) {
   return (
     <div className="SignUpPageLayout">
       <header>
@@ -38,6 +43,7 @@ export default function SignUpPageLayout({ onSignUp, newUser, history }) {
               newUser={newUser}
               onSignUp={onSignUp}
               history={history}
+              errorMsg={errorMsg}
             />
           </div>
         </div>

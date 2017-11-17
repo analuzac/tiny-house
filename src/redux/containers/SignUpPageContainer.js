@@ -10,13 +10,14 @@ function mapStateToProps(state, ownProps) {
     listingItems: state.listingItems,
     hostInfo: state.hostInfo,
     userInfo: state.userInfo,
-    newUser: state.newUser
+    newUser: state.newUser,
+    errorMsg: state.errorMsg
   };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onSignUp: newUser => dispatch(createUserProcess(newUser))
+    onSignUp: newUser => dispatch(createUserProcess(newUser, ownProps.history))
   };
 }
 
