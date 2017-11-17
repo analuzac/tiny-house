@@ -7,7 +7,8 @@ import UpdateFormComponent from './UpdateFormComponent';
 export default function UpdateListingPageLayout({
   hostInfo,
   onUpdate,
-  history
+  history,
+  errorMsg
 }) {
   if (hostInfo !== null) {
     return (
@@ -43,6 +44,7 @@ export default function UpdateListingPageLayout({
                 hostInfo={hostInfo}
                 onUpdate={onUpdate}
                 history={history}
+                errorMsg={errorMsg}
               />
             </div>
           </div>

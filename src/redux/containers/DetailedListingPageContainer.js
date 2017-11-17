@@ -7,7 +7,7 @@ function mapStateToProps(state, ownProps) {
   return {
     listingItems: state.listingItems,
     hostInfo: state.hostInfo,
-    error: state.error
+    errorMsg: state.errorMsg
   };
 }
 

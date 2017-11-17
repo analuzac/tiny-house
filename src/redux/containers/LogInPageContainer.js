@@ -9,13 +9,14 @@ function mapStateToProps(state, ownProps) {
   return {
     listingItems: state.listingItems,
     hostInfo: state.hostInfo,
-    userInfo: state.userInfo
+    userInfo: state.userInfo,
+    errorMsg: state.errorMsg
   };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onLogIn: userInfo => dispatch(getTokenProcess(userInfo)),
+    onLogIn: userInfo => dispatch(getTokenProcess(userInfo, ownProps.history)),
     onLogOut: () =>
       dispatch({
         type: 'REMOVE_TOKEN',

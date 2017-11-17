@@ -6,8 +6,9 @@ import EditableWidgetComponent from './EditableWidgetComponent';
 export default function SuccessfulListingComponent({
   hostInfo,
   onClose,
-  // onEdit,
-  onDelete
+  onDelete,
+  history,
+  errorMsg
 }) {
   return (
     <div className="section">
@@ -16,13 +17,21 @@ export default function SuccessfulListingComponent({
           <SuccessMessageComponent hostInfo={hostInfo} onClose={onClose} />
         </div>
         <div className="col s12 m8">
-          <EditableWidgetComponent
-            hostInfo={hostInfo}
-            // onEdit={onEdit}
-            onDelete={onDelete}
-          />
+          <EditableWidgetComponent hostInfo={hostInfo} onDelete={onDelete} />
+          {
+            <h5 style={styles.errorStyle}>
+              {errorMsg ? errorMsg : null}
+            </h5>
+          }
         </div>
       </div>
     </div>
   );
 }
+
+const styles = {
+  errorStyle: {
+    color: 'red',
+    fontWeight: 'bold'
+  }
+};

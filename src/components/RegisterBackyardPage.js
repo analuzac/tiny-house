@@ -7,11 +7,11 @@ import SuccessfulListingComponent from './SuccessfulListingComponent';
 export default function RegisterBackyardPage({
   hostInfo,
   onClose,
-  // onEdit,
   onDelete,
-  addListing
+  addListing,
+  history,
+  errorMsg
 }) {
-  //console.log(onEdit, 'fooooooo');
   return (
     <div className="RegisterBackyardPage">
       <RegisterBackyardPageLayout>
@@ -19,10 +19,15 @@ export default function RegisterBackyardPage({
           ? <SuccessfulListingComponent
               hostInfo={hostInfo}
               onClose={onClose}
-              // onEdit={onEdit}
               onDelete={onDelete}
+              history={history}
+              errorMsg={errorMsg}
             />
-          : <FormComponent addListing={addListing} />}
+          : <FormComponent
+              addListing={addListing}
+              history={history}
+              errorMsg={errorMsg}
+            />}
       </RegisterBackyardPageLayout>
     </div>
   );

@@ -10,7 +10,9 @@ import getListingsProcess from '../thunks/getListingsProcess';
 function mapStateToProps(state, ownProps) {
   return {
     listingItems: state.listingItems,
-    hostInfo: state.hostInfo
+    hostInfo: state.hostInfo,
+    userInfo: state.userInfo,
+    errorMsg: state.errorMsg
   };
 }
 
@@ -19,22 +21,24 @@ function mapDispatchToProps(dispatch, ownProps) {
     onMount: () => dispatch(getListingsProcess()),
     addListing: hostInfo =>
       dispatch(
-        createListingProcess({
-          fields: {
+        createListingProcess(
+          {
             location: hostInfo.location,
-            dimensions: Number(hostInfo.dimensions),
-            rent: Number(hostInfo.rent),
+            dimensions: hostInfo.dimensions,
+            rent: hostInfo.rent,
             date: hostInfo.date,
             amenities: hostInfo.amenities
-          }
-        })
+          },
+          ownProps.history
+        )
       ),
     onClose: () =>
       dispatch({
         type: 'CLOSE_SUCESS_MESSAGE',
         hostInfo: null
       }),
-    onDelete: hostInfo => dispatch(deleteListingProcess(hostInfo))
+    onDelete: hostInfo =>
+      dispatch(deleteListingProcess(hostInfo, ownProps.history))
   };
 }
 

@@ -2,10 +2,14 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-export default function WidgetComponent({ hostInfo, onLove }) {
+export default function WidgetComponent({
+  hostInfo,
+  onLove,
+  history,
+  errorMsg
+}) {
   function handleLove(event) {
     //event.preventDefault();
-    console.log('inside WidgetComponent', event);
     //Technically don't need onLove because somewhere in ownProps is backyardId
     onLove(hostInfo);
   }

@@ -2,9 +2,7 @@ import React from 'react';
 
 import WidgetComponent from './WidgetComponent';
 
-export default function({ listingItems, onLove }) {
-  console.log('this is is listingItems', listingItems);
-  // console.log('this is is props', props);
+export default function({ listingItems, onLove, history, errorMsg }) {
   // if (listingItems !== null) {
   return (
     <div className="ListingsComponent">
@@ -14,6 +12,8 @@ export default function({ listingItems, onLove }) {
             key={listingItem.id}
             hostInfo={listingItem}
             onLove={onLove}
+            history={history}
+            errorMsg={errorMsg}
           />
         )}
       {!listingItems ||

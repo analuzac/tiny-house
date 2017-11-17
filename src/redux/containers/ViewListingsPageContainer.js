@@ -11,7 +11,9 @@ import getFilteredListingsProcess from '../thunks/getFilteredListingsProcess';
 function mapStateToProps(state, ownProps) {
   return {
     listingItems: state.listingItems,
-    hostInfo: state.hostInfo
+    hostInfo: state.hostInfo,
+    userInfo: state.userInfo,
+    errorMsg: state.errorMsg
   };
 }
 
@@ -20,7 +22,8 @@ function mapDispatchToProps(dispatch, ownProps) {
   //given backyardId, LOOK UP the correct host
   return {
     onMount: () => dispatch(getListingsProcess()),
-    onLove: hostInfo => dispatch(getOneListingProcess(hostInfo)),
+    onLove: hostInfo =>
+      dispatch(getOneListingProcess(hostInfo, ownProps.history)),
     onSort: sort => dispatch(getSortedListingsProcess(sort)),
     onFilter: filter => dispatch(getFilteredListingsProcess(filter))
   };

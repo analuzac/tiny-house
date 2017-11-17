@@ -1,6 +1,6 @@
 import env from '../env';
 
-export default function createListing(listing) {
+export default function createListing(listing, history) {
   let storedToken = localStorage.getItem('token');
 
   return fetch(`${env.API_BASE_URL}/listings`, {
@@ -10,11 +10,14 @@ export default function createListing(listing) {
     method: 'POST',
     headers: {
       Authorization: storedToken,
-      // Authorization: 'Bearer keyE9lXfaaEAGEG23',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(listing.fields)
+    body: JSON.stringify(listing)
   }).then(response => {
+    if (response.status === 401) {
+      history.push('/registration');
+      return response.text();
+    }
     return response.json();
   });
 }

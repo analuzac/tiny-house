@@ -4,7 +4,7 @@ export default function rootReducer(
     hostInfo: null,
     userInfo: null,
     newUser: null,
-    error: null
+    errorMsg: null
   },
   action
 ) {
@@ -64,6 +64,11 @@ export default function rootReducer(
       return {
         ...currentState,
         userInfo: action.userInfo
+      };
+    case 'UPDATE_ERROR':
+      return {
+        ...currentState,
+        errorMsg: action.errorMsg
       };
 
     default:

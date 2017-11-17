@@ -21,7 +21,6 @@ export default class SignUpComponent extends Component {
     const email = $form.email.value;
     const password = $form.password.value;
     const newUser = { name, email, password };
-    console.log('USER SIGNED UP', newUser);
 
     let regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -32,7 +31,6 @@ export default class SignUpComponent extends Component {
   };
 
   render() {
-    //console.log(this.state, 'these are the props');
     return (
       <form id="form" className="col s12 m12" onSubmit={this.handleSubmit}>
         <div id="title" className="col s12 m12">

@@ -7,7 +7,8 @@ export default function ViewListingsPage({
   hostInfo,
   onLove,
   onSort,
-  onFilter
+  onFilter,
+  errorMsg
 }) {
   return (
     <div className="ViewListingsPage">
@@ -17,6 +18,7 @@ export default function ViewListingsPage({
         onLove={onLove}
         onSort={onSort}
         onFilter={onFilter}
+        errorMsg={errorMsg}
       />
     </div>
   );

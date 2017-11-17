@@ -11,9 +11,10 @@ export default function ViewListingsPageLayout({
   hostInfo,
   onLove,
   onSort,
-  onFilter
+  onFilter,
+  history,
+  errorMsg
 }) {
-  //console.log(listingItems);
   if (listingItems !== null) {
     return (
       <div className="ViewListingsPageLayout">
@@ -49,7 +50,17 @@ export default function ViewListingsPageLayout({
             {<SortComponent onSort={onSort} />}
           </div>
         </div>
-
+        {
+          <div className="container">
+            <div className="section">
+              <div className="row">
+                <h5 style={styles.errorStyle}>
+                  {errorMsg ? errorMsg : null}
+                </h5>
+              </div>
+            </div>
+          </div>
+        }
         {/* display widgets code */}
         <div className="container">
           <div className="section">
@@ -59,6 +70,8 @@ export default function ViewListingsPageLayout({
                   listingItems={listingItems}
                   hostInfo={hostInfo}
                   onLove={onLove}
+                  history={history}
+                  errorMsg={errorMsg}
                 />
               }
             </div>
@@ -76,3 +89,10 @@ export default function ViewListingsPageLayout({
     return <div>LOADING ONE SECOND :P</div>;
   }
 }
+
+const styles = {
+  errorStyle: {
+    color: 'red',
+    fontWeight: 'bold'
+  }
+};

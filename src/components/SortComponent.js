@@ -12,15 +12,11 @@ export default class SortComponent extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const $form = event.target;
-
     const sort = $form.sort.value.trim();
-    console.log('sort', sort);
-
     this.props.onSort(sort);
   };
 
   render() {
-    //console.log(this.state, 'these are the props');
     return (
       <form id="form" className="col s12 m12" onSubmit={this.handleSubmit}>
         <div className="row">

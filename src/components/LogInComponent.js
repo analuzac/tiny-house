@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 export default class LogInComponent extends Component {
-  //{ userInfo, onLogIn, history }) {
-  //console.log('LOGIN_PROPS', props);
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +16,6 @@ export default class LogInComponent extends Component {
     const email = $form.email.value;
     const password = $form.password.value;
     const userInfo = { email, password };
-    console.log('USER LOGGED IN', userInfo);
 
     let regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -28,6 +25,7 @@ export default class LogInComponent extends Component {
   };
 
   render() {
+    //let errorMessage = localStorage.getItem('errorMsg');
     return (
       <form id="form" className="col s12 m12" onSubmit={this.handleSubmit}>
         <div id="title" className="col s12 m12">
@@ -69,6 +67,11 @@ export default class LogInComponent extends Component {
           </button>
           {this.state.hasValidationErrors &&
             <h5 style={styles.errorStyle}>Please submit valid inputs</h5>}
+          {
+            <h5 style={styles.errorStyle}>
+              {this.props.errorMsg ? this.props.errorMsg : null}
+            </h5>
+          }
         </div>
       </form>
     );

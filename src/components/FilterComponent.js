@@ -12,15 +12,11 @@ export default class FilterComponent extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const $form = event.target;
-
     const filter = $form.filter.value.trim();
-    console.log('filter', filter);
-
     this.props.onFilter(filter);
   };
 
   render() {
-    //console.log(this.state, 'these are the props');
     return (
       <form id="form" className="col s12 m12" onSubmit={this.handleSubmit}>
         <div className="row">

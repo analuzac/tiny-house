@@ -9,13 +9,15 @@ function mapStateToProps(state, ownProps) {
   return {
     listingItems: state.listingItems,
     hostInfo: state.hostInfo,
-    error: state.error
+    userInfo: state.userInfo,
+    errorMsg: state.errorMsg
   };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onUpdate: hostInfo => dispatch(updateListingProcess(hostInfo))
+    onUpdate: hostInfo =>
+      dispatch(updateListingProcess(hostInfo, ownProps.history))
   };
 }
 

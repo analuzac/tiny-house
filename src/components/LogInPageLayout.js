@@ -2,11 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-//import LogInComponent from './LogInComponent';
-
 export default function LogInPageLayout({ children }) {
-  //{ userInfo, onLogIn }
-  console.log('THE PROPS', children);
   return (
     <div className="LogInPageLayout">
       <header>

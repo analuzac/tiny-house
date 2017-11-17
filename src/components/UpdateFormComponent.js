@@ -55,8 +55,6 @@ export default class UpdateFormComponent extends Component {
   };
 
   render() {
-    // console.log(this.state, 'these are the props');
-    // console.log('this is hostInfo', this.props.hostInfo);
     return (
       <form id="form" className="col s12 m12" onSubmit={this.handleSubmit}>
         <div className="row">
@@ -137,6 +135,11 @@ export default class UpdateFormComponent extends Component {
           </button>
           {this.state.hasValidationErrors &&
             <h5 style={styles.errorStyle}>Please submit valid inputs</h5>}
+          {
+            <h5 style={styles.errorStyle}>
+              {this.props.errorMsg ? this.props.errorMsg : null}
+            </h5>
+          }
         </div>
       </form>
     );
